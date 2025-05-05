@@ -1,0 +1,14 @@
+[package]
+name = "aro"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+pyo3 = { version = "0.24", features = ["extension-module"] }
+
+[profile.release]
+lto = true                  # Optimisation Link-Time
+codegen-units = 1           # Compilation plus lente mais optimisée
+
+[package.metadata.maturin]
+compatibility = "manylinux2014"  # Compatibilité large incluant ARM

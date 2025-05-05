@@ -1,0 +1,23 @@
+[package]
+name = "aro"
+version = "1.0.0"
+edition = "2021"
+description = "Une extension Rust/Python élégante et performante créée avec soin"
+authors = ["Votre Prénom <votre@email.com>"]
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+pyo3 = { version = "0.24.2", features = ["extension-module"] }
+
+[profile.release]
+lto = true                  # Optimisation Link-Time
+codegen-units = 1           # Compilation plus lente mais meilleures optimisations
+opt-level = 3               # Niveau maximum d'optimisation
+strip = true                # Réduction de la taille du binaire
+
+[profile.dev]
+opt-level = 0               # Désactive les optimisations pour un debug plus rapide
+
+[lib]
+name = "aro"                # Nom de la bibliothèque
+crate-type = ["cdylib"]     # Format de sortie pour Python
