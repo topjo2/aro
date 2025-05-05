@@ -26,3 +26,13 @@ fn aro(py: Python<'_>, m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(au_revoir, py)?)?;  // Ne pas oublier cette ligne
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_multiplier() {
+        assert_eq!(multiplier(2, 3), 6);
+    }
+}
