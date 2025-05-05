@@ -1,0 +1,17 @@
+name: Tests Aro
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+      - run: cargo test
+      - run: pip install maturin
+      - run: maturin develop --release
+      - run: python test_aro.py
